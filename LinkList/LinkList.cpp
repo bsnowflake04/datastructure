@@ -10,12 +10,13 @@ typedef struct node {
 	struct node* link;
 }LNode, *LinkList;
 
-void main(){
+int main(){
+
 }
 
 //	求链表长度
 int LENGTHEN(LinkList list) {
-	LinkList p;
+	LinkList p = list;
 	int n = 0;
 	while (p != NULL) {
 		p = p->link;
@@ -49,6 +50,7 @@ LinkList establish(int n) {
 	}
 	return list;
 }
+
 
 //	在非空线性链表的第一个节点前插入一个数据信息为item的新节点
 void insert(LinkList& list, int item) {
@@ -87,7 +89,52 @@ void insert3(LinkList& list, int i, int item) {
 	q->link = p;
 }
 
-//
+//	从非空线性链表中删除q指的链结点，设q的直接前驱节点由r指出
+void delete1(LinkList& list, LinkList q, LinkList r) {
+	if (q == list) {
+		list = q->link;
+	}
+	else {
+		r->link = q->link;
+	}
+	free(q);
+}
+
+//	从非空线性链表中删除q指的链结点
+void delete2(LinkList& list, LinkList q) {
+	LinkList p = list;
+	if (q == list) {
+		list = q->link;
+		free(q);
+	}
+	else {
+		while (p->link != q && p->link != NULL) {
+			p = p->link;
+		}
+		if (p->link != NULL) {
+			p->link = q->link;
+			free(q);
+		}
+	}
+}
+
+//	用尽可能高的时间效率找到由list所指的线性链表的倒数第K个结点，给出该点的地址否则给出NULL
+LinkList game1(LinkList list, int k) {
+	if (list == NULL || k <= 0) {
+		return NULL;
+	}
+	LinkList p = list, r = list;
+	for (int i = 1; i < k; i++) {
+		r = r->link;
+		if (r == NULL)return NULL;
+	}
+
+	while (r->link != NULL) {
+		p = p->link;
+		r = r->link;
+	}
+	return p;
+}
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
