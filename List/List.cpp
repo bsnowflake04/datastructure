@@ -6,9 +6,14 @@
 
 #define MAXSIZE 100
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+//	读
+void read(int a[], int n) {
+	int i = 0;
+	for (int i = 0; i < n; i++) {
+		printf("%d ", a[i]);
+	}
+	printf("\n");
 }
 
 //	确定元素item在长度为n的线性表a中的位置
@@ -48,13 +53,80 @@ int ques1(int a[], int n, int item) {
 		while (item >= a[i]) {
 			i++;
 		}
-		for (int j = n - 1; j >= i; j--) {
+		for (int j = n - 1; j >= i; j--) {	//i是下标
 			a[j + 1] = a[j];
 		}
 		a[i] = item;
 	}
 	n++;
 	return 1;
+}
+
+//	对于通过键盘输入的n个整形数据元素，建立一个不包含重复元素的顺序表（假设不考虑存储空间溢出的问题）
+void game(int a[], int n) {
+	int m, flag = 0;
+	int x = 0;
+	for (int i = 0; i < n; i++) {
+		scanf_s("%d", &m);
+		for (int j = 0; j < x; j++) {
+			if (a[j] == m) {
+				flag = 1;
+			}
+		}
+		if (flag == 0) { a[x] = m; x++; }
+		else flag = 0;
+		read(a, n);
+	}
+}
+
+//	已知长度为n的非空顺序表a的数据元素按值的大小非递减排列，写一算法删除顺序表中值相同的多余元素
+void game2(int a[], int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = i+1; j < n; j++) {
+			if (a[i] == a[j]) {
+				for (int k = i+1; k < n; k++) {
+					a[k-1] = a[k];
+				}
+				n--;
+			}
+		}
+		read(a, n);
+	}
+}
+void del(int a[], int& n) {
+	int j, i = 0;
+	while (i < n-1) {
+		if (a[i] != a[i + 1])i++;
+		else {
+			for (j = i + 1; j < n; j++)
+				a[j - 1] = a[j];
+			n--;
+		}
+	}
+}
+void del2(int a[], int& n) {
+	int i, k = 0;
+	if (n > 1) {
+		for (i = 1; i < n; i++) {
+			if (a[i] != a[k])a[++k] = a[i];
+			n = k + 1;
+		}
+	}
+}//	???
+
+
+
+////////////////////////////////////////////////////
+int main()
+{
+	int a[10];
+	for (int i = 0; i < 10; i++) {
+		a[i] = i;
+	}
+	a[3] = 7;
+	a[5] = 3;
+	game2(a, 8);
+	return 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
