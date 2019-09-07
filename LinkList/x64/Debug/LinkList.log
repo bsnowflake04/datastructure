@@ -1,2 +1,4 @@
 ﻿  LinkList.cpp
+E:\github\bsnowflake04.github.com\LinkList\LinkList.cpp(340): warning C4091:  “typedef ”: 没有声明变量时忽略“DoubleLinkList::node”的左侧
+E:\github\bsnowflake04.github.com\LinkList\LinkList.cpp(340): warning C4091: E:\github\bsnowflake04.github.com\LinkList\LinkList.cpp(311) : warning C4715: “i”: 不是所有的控件路径都返回值
   LinkList.vcxproj -> E:\github\bsnowflake04.github.com\LinkList\x64\Debug\LinkList.exe

@@ -4,11 +4,13 @@
 #include <iostream>
 #include <stdio.h>
 #include <malloc.h>
+#include <fileapi.h>
 
 typedef struct node {
 	int data;
 	struct node* link;
 }LNode, *LinkList;
+
 
 //	读循环链表
 void read(LinkList list) {
@@ -17,6 +19,17 @@ void read(LinkList list) {
 		printf("%d ", w->data);
 		w = w->link;
 	} while (w != list);
+}
+
+//	读链表
+void read1(LinkList list) {
+	LinkList p = list;
+	while (p != NULL) {
+		printf("%d ->", p->data);
+		p = p->link;
+	}
+	printf("NULL");
+	printf("\n");
 }
 
 //	求链表长度
@@ -42,8 +55,9 @@ LinkList establish(int n) {
 	LinkList  p = NULL, r=NULL, list = NULL;
 	for (int i = 1; i <= n; i++) {
 		p = (LinkList)malloc(sizeof(LNode));
-		p->data = i;
 		p->link = NULL;
+		p->data = i%4;
+		if (i == 1)p->data = 10;
 		if (list == NULL) {
 			list = p;
 		}
@@ -186,7 +200,117 @@ void JOSEPHU(int n, int k, int m) {
 }
 
 //	已知线性链表第一个链结点的指针为list，请写一段销毁（将链表中所有结点都删除，并释放其存储空间，使之成为一个空链表）该链表的非递归算法
+void game3(LinkList& list) {
+	LinkList r = NULL;
+	while (list != NULL) {
+		r = list;
+		list = list->link;
+		free(r);
+		read1(list);
+	}
+	
+}
 
+//	已知不带头结点的非空线性链表第一个链结点的指针为list,请删除链表中数据域内容相同的多余结点
+void game4(LinkList& list) {
+	LinkList p = list, q = NULL, r = list;
+	while (p->link != NULL) {
+		r = p;
+		q = p->link;
+		while (q != NULL) {
+			if (q->data == p->data) {
+				r->link = q->link;
+				free(q);
+				q = r;
+			}
+			r = q;
+			q = q->link;
+		}
+		read1(list);
+		p = p->link;
+	}
+}
+
+//	已知非空线性链表第一个结点的指针为list,将该链表中数据域最小的点移到链表的最前端
+void game5(LinkList& list) {
+	LinkList p = list, r = list, q = NULL, s = NULL;
+	while (p != NULL) {
+		q = p;
+		p = p->link;
+		if (p != NULL && p->data < r->data) {
+			s = q; r = p;
+		}
+	}
+	if (r != list) {			//头结点
+		s->link = r->link;
+		r->link = list;
+		list = r;
+	}
+	read1(list);
+
+}
+
+//	已知非空线性链表第一个结点的指针为list, 请写一个算法将链表中数据域最大的那个点移链表的最后面
+void game6(LinkList& list) {
+	LinkList p = list->link, r = list, q = list, s = NULL;			//p和s的初始化能减少一次
+	while (p != NULL) {
+		if (p->data > r->data) {
+			s = q;
+			r = p;
+		}
+		q = p;
+		p = p->link;
+	}
+	if (list == r) {
+		list = list->link;
+	}
+	else {
+		s->link = r->link;
+	}
+	q->link = r;
+	r->link = NULL;
+	read1(list);
+}
+
+//	逆转一个线性链表
+bool invert(LinkList& list) {
+	LinkList p = list, q = NULL, r = NULL;
+	while (p != NULL) {				//画面同时三个结点，rqp，
+		r = q;
+		q = p;
+		p = p->link;
+		q->link = r;
+	}
+	list = q;
+}
+
+//	依次输入一组数据，以符号EOL作为输入结束标志，请写一算法，依次打印最后k个数据元素（设表中元素个数超过k） 1.输入元素个数未知 2.不许先求出元素个数
+void game7(int k) {
+	LinkList list = NULL, p = NULL, r = NULL;
+	int a;
+	list = (LinkList)malloc(sizeof(LNode));
+	r = list;
+	for (int i = 1; i < k; i++) {
+		p = (LinkList)malloc(sizeof(LNode));
+		r->link = p;
+		r = p;
+	}
+	p->link = list;
+
+	p = list;
+	scanf("%d", &a);
+	while (a != EOL); {
+		p->data = a;
+		p = p->link;
+		scanf("%d", &a);
+	}
+	r = p;
+
+	do {
+		printf("%d", p->data);
+		p = p->link;
+	} while (p != r);
+}
 //	建立链表，判空
 LinkList e(int n) {
 	LinkList p = NULL, r = NULL, list = NULL;
@@ -329,6 +453,10 @@ bool de(int n) {
 };
 
 int main() {
+	LinkList n;
+	n = establish(10);
+	read1(n);
+	game6(n);
 	return 0;
 }
 
