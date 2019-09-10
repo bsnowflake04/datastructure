@@ -299,7 +299,7 @@ void game7(int k) {
 
 	p = list;
 	scanf("%d", &a);
-	while (a != EOL); {
+	while (scanf("%d", &a) > 0); {
 		p->data = a;
 		p = p->link;
 		scanf("%d", &a);
