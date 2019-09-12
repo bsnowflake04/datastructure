@@ -3,7 +3,7 @@
 
 #include <iostream>
 #define M 20
-int queue[M];
+int queue[M] = {0};
 int front, rear;
 
 typedef struct node {
@@ -34,15 +34,15 @@ void init(QueueList &front, QueueList &rear) {
 	rear = NULL;
 }
 bool isVoid(QueueList front, QueueList rear) {
-	return front == rear;
+	return front == NULL;
 }
-bool push(QueueList &front, QueueList &rear, int &item) {
+bool push(QueueList &front, QueueList &rear, int item) {
 	//	无需判断满
 	QueueList p;
 	if(!(p = (QueueList)malloc(sizeof(QNode))))return false;
 	p->data = item;
 	p->link = NULL;
-	if (front == rear) {
+	if (front == NULL) {
 		front = p;
 	}
 	else {
@@ -51,7 +51,7 @@ bool push(QueueList &front, QueueList &rear, int &item) {
 	rear = p;
 	return true;
 }
-bool pop(QueueList &front, QueueList &rear, int item) {
+bool pop(QueueList &front, QueueList &rear, int &item) {
 	QueueList p;
 	if (isVoid(front, rear))return false;
 	item = front->data;
@@ -62,17 +62,54 @@ bool pop(QueueList &front, QueueList &rear, int item) {
 }
 bool delet(QueueList &front, QueueList &rear) {
 	QueueList p;
-	while (front != rear) {
+	while (front != NULL) {
 		p = front;
 		front = front->link;
 		free(p);
 	}
 	return true;
 }
+void print(int queue[], int front, int rear) {
+	for (int i = front+1; i < rear+1; i++) {
+		std::cout << queue[i] << " ";
+	}
+	std::cout << "\n";
+
+	for (int i = 0; i < M; i++) {
+		std::cout << queue[i] << " ";
+	}
+}
+void print1(QueueList front, QueueList rear) {
+	while (front != NULL) {
+		std::cout << front->data << " ";
+		front = front->link;
+	}
+}
 int main()
 {
-    std::cout << "Hello World!\n";
+	int n;/*
+	init(front, rear);
+	push(queue, front, rear, 22);
+	push(queue, front, rear, 22);
+	push(queue, front, rear, 33);
+	push(queue, front, rear, 20);
+	pop(queue, front, rear, n);
+	print(queue, front, rear);
+    std::cout << "Hello World!\n" << n;
+	*/
+	//	2
+	QueueList p = NULL, q = NULL;
+	init(p, q);
+	push(p, q, 1);
+	push(p, q, 2);
+	push(p, q, 3);
+	pop(p, q, n);
+	delet(p, q);
+	print1(p, q);
+	std::cout << "Hello World!\n" << n;
 }
+
+
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
