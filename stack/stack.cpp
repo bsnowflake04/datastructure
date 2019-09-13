@@ -60,6 +60,7 @@ bool pop1(int stack[], int top[], int i, int &item) {
 	}
 	return true;
 }
+
 ////	堆栈链式结构
 void init(StackList &top) {
 	top = NULL;
@@ -67,7 +68,6 @@ void init(StackList &top) {
 bool isVoid(StackList top) {
 	return top == NULL;
 }
-
 bool push2(StackList& top, int item) {
 	//	不用判满哈哈哈
 	StackList p = NULL;
@@ -106,39 +106,143 @@ void print2(StackList top) {
 		top = top->link;
 	}
 }
+
+//	堆栈应用： 数制转换 表达式计算 递归 符号匹配检查 迷宫
+
+//	设计一个算法，该算法将数组a[0..n-1]的所有元素循环右移k个位置  （将数组循环右移k位）
+void game1(int a[], int n, int k) {
+	int temp;
+
+	/*for (int t = 1; t <= k; t++) {
+		temp = a[n - 1];
+		for (int j = n - 2; j >= 0; j--) {
+			a[j + 1] = a[j];
+		}
+		a[0] = temp;
+	}*/
+
+	/*for (int t = 1; t <= k; t++) {
+		temp = a[0];
+		for (int j = n - 1; j > 0; j--) {
+			a[(j + 1) % n] = a[j];
+		}
+		a[1] = temp;
+	}*/
+	int i = 0, j = 0;
+	for (int t = 1; t < n; t++) {//		换n-1次
+		j = (j + k) % n;
+		if (i != j) {
+			temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
+		else { //		当j==i而未换完时-->k的整数倍的因子包括n&&该整数倍次<n
+			i++;
+			j++;
+		}
+	}
+}
+//	进制转换：已知一个无符号十进制整数num,写一算法，依次输出其对应的八进制数的各位数字：通过入栈出栈实现数字的倒序输出
+void game2(int num) {
+	init(top);
+	do {
+		stack[++top] = num % 8;
+		num = num / 8;
+	} while (num != 0);
+
+	while (top != -1) {
+		std::cout << stack[top--];
+	}
+}
+void game2_2(int num) {
+	StackList q = NULL, top = NULL;
+	do {
+		q = (StackList)malloc(sizeof(SNode));
+		q->data = num % 16;
+		q->link = top;
+		top = q;
+		num = num / 16;
+	} while (num != 0);
+	
+	while (top != NULL) {
+		//std::cout << top->data;
+		switch (top->data) {
+			case 10: std::cout << "A"; break; 
+			case 11: std::cout << "B"; break; 
+			case 12: std::cout << "C"; break; 
+			case 13: std::cout << "D"; break; 
+			case 14: std::cout << "E"; break; 
+			case 15: std::cout << "F"; break; 
+			default: std::cout << top->data;
+		}
+		q = top;
+		top = top->link;
+		free(q);
+	}
+}
+//	用非递归算法解决递归问题，f(m,n) =  m+n+1 (m*n=0)  f(m-1,f(m,n-1)) (m*n!=0)
+int game3(int m, int n) {
+	init(top);
+	do {
+		if (m * n != 0) {
+			stack[++top] = m - 1;
+			n--;
+		}
+		else {
+			n = m + n + 1;
+			if (top >= 0 ){
+				m = stack[top];
+			}
+			top--;
+		}
+	} while (top >= -1);
+	return n;
+}
+//	将中缀表达式转换为后缀表达式（运算符在运算对象后，后缀表达式无括号，计算顺序按符号出现顺序）
 int main()
 {
-	//1
-	int n, m, x;
-	init(top);
-	push(stack, top, 2);
-	push(stack, top, 12);
-	push(stack, top, 11);
-	pop(stack, top, n);
-	push(stack, top, 132);
-	print(stack, top);
-	
-    std::cout << "Hello World!\n" << n << "\n";
-	//2
-	init1(top1);
-	push1(stack, top1, 0, 55);
-	push1(stack, top1, 0, 2);
-	pop1(stack, top1, 0, m);
-	push1(stack, top1, 1, 22);
-	push1(stack, top1, 1, 33);
-	push1(stack, top1, 0, 55);
-	print1(stack);
-	std::cout << "Hello World!\n" << m << "\n";
-	//3
-	StackList p;
-	init(p);
-	push2(p, 23);
-	push2(p, 23);
-	push2(p, 22);
-	push2(p, 7);
-	pop2(p, x);
-	print2(p);
-	std::cout << "he" << "\n" << x;
+	////1
+	//int n, m, x;
+	//init(top);
+	//push(stack, top, 2);
+	//push(stack, top, 12);
+	//push(stack, top, 11);
+	//pop(stack, top, n);
+	//push(stack, top, 132);
+	//print(stack, top);
+	//
+ //   std::cout << "Hello World!\n" << n << "\n";
+	////2
+	//init1(top1);
+	//push1(stack, top1, 0, 55);
+	//push1(stack, top1, 0, 2);
+	//pop1(stack, top1, 0, m);
+	//push1(stack, top1, 1, 22);
+	//push1(stack, top1, 1, 33);
+	//push1(stack, top1, 0, 55);
+	//print1(stack);
+	//std::cout << "Hello World!\n" << m << "\n";
+	////3
+	//StackList p;
+	//init(p);
+	//push2(p, 23);
+	//push2(p, 23);
+	//push2(p, 22);
+	//push2(p, 7);
+	//pop2(p, x);
+	//print2(p);
+	//std::cout << "he" << "\n" << x;
+	////game1
+	//int a[] = { 0, 1, 2, 3 };
+	//game1(a, 4, 2);
+	//for (int i = 0; i < 4; i++) {
+	//	std::cout << a[i] << " ";
+	//}
+	////game2
+	//game2(18);
+	//game2_2(27);
+	//game3
+	std::cout << game3(2,1);
 
 }
 

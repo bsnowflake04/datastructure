@@ -1,4 +1,2 @@
 ﻿  stack.cpp
-D:\github\bsnowflake04.github.com\stack\stack.cpp(112,9): warning C4101:  “m”: 未引用的局部变量
-D:\github\bsnowflake04.github.com\stack\stack.cpp(112,6): warning C4101:  “n”: 未引用的局部变量
   stack.vcxproj -> D:\github\bsnowflake04.github.com\stack\Debug\stack.exe

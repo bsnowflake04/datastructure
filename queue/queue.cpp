@@ -85,6 +85,8 @@ void print1(QueueList front, QueueList rear) {
 		front = front->link;
 	}
 }
+
+//	应用： 主机与外部用户资源不匹配  多用户资源竞争 离散事件模拟 图的广度优先搜索 树的层次遍历
 int main()
 {
 	int n;/*
