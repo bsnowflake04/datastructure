@@ -133,6 +133,70 @@ void inorder(int BTree[], int n) {
 	}
 }
 
+BTree insertBST(BTree &t, int item) {
+	BTree p = NULL, q = t;
+	p = (BTree)malloc(sizeof(BTnode));
+	p->data = item;
+	p->lchild = NULL;
+	p->rchild = NULL;
+
+	if (t == NULL) { t = p; }
+	else {
+		while (true) {
+			if (q->data == item)return q;
+			if (item < q->data) {
+				if (q->lchild == NULL) { q->lchild = p; break; }
+				else { q = q->lchild; }
+			}
+			else {
+				if (q->rchild == NULL) { q->rchild = p; break; }
+				else { q = q->rchild; }
+			}
+
+		}
+	}
+	return t;
+
+}
+BTree buildBST(int p[], int n) {
+	BTree q = NULL;
+	for (int i = 0; i < n; i++) {
+		q = insertBST(q, p[i]);
+	}
+	return q;
+}
+
+BTree searchBST(BTree t, int item) {
+	BTree p = t;
+	while (p != NULL) {
+		if (item == p->data)return p;
+		if (item < p->data) {
+			p = p->lchild;
+		}
+		if (item > p->data) {
+			p = p->rchild;
+		}
+	}
+	return NULL;
+}
+
+BTree searchBST2(BTree t, int item) {//	递归遍历
+	BTree p = t;
+	if(p != NULL) {
+		if (item == p->data)return p;
+		if (item < p->data) {
+			return searchBST2(p->lchild, item);
+		}
+		if (item > p->data) {
+			return searchBST2(p->rchild, item);
+		}
+	}
+	else {
+		return NULL;
+	}
+}
+
+
 int main()
 {
     std::cout << "Hello World!\n";
