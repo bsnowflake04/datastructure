@@ -133,6 +133,7 @@ void inorder(int BTree[], int n) {
 	}
 }
 
+//	二叉排序树binary sort tree
 BTree insertBST(BTree &t, int item) {
 	BTree p = NULL, q = t;
 	p = (BTree)malloc(sizeof(BTnode));
@@ -165,7 +166,6 @@ BTree buildBST(int p[], int n) {
 	}
 	return q;
 }
-
 BTree searchBST(BTree t, int item) {
 	BTree p = t;
 	while (p != NULL) {
@@ -179,7 +179,6 @@ BTree searchBST(BTree t, int item) {
 	}
 	return NULL;
 }
-
 BTree searchBST2(BTree t, int item) {//	递归遍历
 	BTree p = t;
 	if(p != NULL) {
@@ -196,7 +195,27 @@ BTree searchBST2(BTree t, int item) {//	递归遍历
 	}
 }
 
+//	已知深度为h的非空二叉树采用顺序存储结构存放于数组BT[0..2^h-2],写一算法求二叉树中叶节点的数目
+int game1(BTree BT[], int h) {
+	int total = 0;
+	for (int i = 0; i < int(pow(2, h)) - 1; i++) {
+		if (BT[i] != NULL) {
+			if (BT[2 * i + 1] == NULL && BT[2 * 2 + 2] == NULL || i > int(pow(2, h - 1)) - 1)total++;
+		}
+	}
+	return total;
+}
+int game1_1(BTree t) {
+	if (t == NULL) {
+		return 0;
+	}
+	if (t->lchild == NULL && t->rchild == NULL)return 1;
+	return game1_1(t->lchild) + game1_1(t->rchild);
+}
 
+//	已知具有n个结点的非空完全二叉树采用顺序存储结构，结点的数据信息依次存放于数组BT[0..n-1],请写出产生该二叉树二叉链表的算法
+#define maxnode 100
+BTree build
 int main()
 {
     std::cout << "Hello World!\n";
@@ -212,3 +231,4 @@ int main()
 //   4. 使用错误列表窗口查看错误
 //   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
 //   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+//
