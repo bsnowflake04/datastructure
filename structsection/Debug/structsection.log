@@ -1,0 +1,6 @@
+﻿  structsection.cpp
+D:\github\bsnowflake04.github.com\structsection\structsection.cpp(61,7): warning C4101:  “z”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\structsection\structsection.cpp(61,5): warning C4101:  “y”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\structsection\structsection.cpp(83,19): warning C4244:  “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\github\bsnowflake04.github.com\structsection\structsection.cpp(86,9): warning C4244:  “=”: 从“float”转换到“int”，可能丢失数据
+  structsection.vcxproj -> D:\github\bsnowflake04.github.com\structsection\Debug\structsection.exe
