@@ -1,0 +1,7 @@
+﻿  win32.cpp
+D:\github\bsnowflake04.github.com\win32\win32.cpp(171,11): warning C4101:  “hThread”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\win32\win32.cpp(178,11): warning C4101:  “threads”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\win32\win32.cpp(170,10): warning C4101:  “threadID”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\win32\win32.cpp(174,10): warning C4101:  “threadID2”: 未引用的局部变量
+D:\github\bsnowflake04.github.com\win32\win32.cpp(175,11): warning C4101:  “hThread2”: 未引用的局部变量
+  win32.vcxproj -> D:\github\bsnowflake04.github.com\filesection\x64\Debug\win32.exe

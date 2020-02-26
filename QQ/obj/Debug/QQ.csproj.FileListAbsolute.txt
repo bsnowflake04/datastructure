@@ -1,0 +1,10 @@
+D:\github\bsnowflake04.github.com\QQ\bin\Debug\QQ.exe.config
+D:\github\bsnowflake04.github.com\QQ\bin\Debug\QQ.exe
+D:\github\bsnowflake04.github.com\QQ\bin\Debug\QQ.pdb
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.csprojAssemblyReference.cache
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.Form1.resources
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.Properties.Resources.resources
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.csproj.GenerateResource.cache
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.csproj.CoreCompileInputs.cache
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.exe
+D:\github\bsnowflake04.github.com\QQ\obj\Debug\QQ.pdb

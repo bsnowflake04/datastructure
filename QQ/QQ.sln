@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QQ", "QQ.csproj", "{6967379C-82F0-4B08-B932-14962E65A5EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sever", "Sever\Sever.csproj", "{1AAFEFCB-EE44-4B8E-834B-DE913F20C6BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6967379C-82F0-4B08-B932-14962E65A5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6967379C-82F0-4B08-B932-14962E65A5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6967379C-82F0-4B08-B932-14962E65A5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6967379C-82F0-4B08-B932-14962E65A5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAFEFCB-EE44-4B8E-834B-DE913F20C6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAFEFCB-EE44-4B8E-834B-DE913F20C6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAFEFCB-EE44-4B8E-834B-DE913F20C6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAFEFCB-EE44-4B8E-834B-DE913F20C6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57088C65-C17D-44BC-9E02-CE62639ABCF1}
+	EndGlobalSection
+EndGlobal
